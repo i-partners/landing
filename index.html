@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Compra Leads</title>
+    <title>i-Leads Tecnología i-Partners</title>
     <style>
         body {
             background-color: black;
@@ -17,53 +17,98 @@
             margin: 0 auto;
             padding: 20px;
         }
+        .form-section {
+            display: flex;
+            flex-direction: column;
+        }
         h1 {
             text-align: center;
         }
-        .plan {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center; /* Para centrar verticalmente el contenido */
-            flex-direction: column;
+        input {
+            margin: 10px 0;
+            padding: 10px;
         }
-        .plan h2 {
-            text-align: center;
+        button {
+            margin: 10px 0;
+            padding: 10px;
         }
-        .price {
-            text-align: center;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .plan-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            margin-right: 20px;
+        table, th, td {
+            border: 1px solid white;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>1000 Clientes Cualificados de tu sector gracias a la inteligencia artificial</h1>
-        <div class="plan">
-            <img src="pack1.jpeg" alt="Plan 1" class="plan-image">
-            <h2>Pack 1</h2>
-            <p>1000 Leads por 199€</p>
-            <p class="price">199€</p>
+        <h1>Haz click y consigue los leads de tu competencia</h1>
+        <div class="form-section">
+            <input type="text" placeholder="Usuario de tu competencia">
+            <input type="text" placeholder="Usuario de tu competencia">
+            <button id="extractButton">Extraer Leads</button>
         </div>
-        <div class="plan">
-            <img src="pack2.jpeg" alt="Plan 2" class="plan-image">
-            <h2>Pack 2</h2>
-            <p>2500 Leads por 350€</p>
-            <p class="price">350€</p>
+        <div id="progress" style="display: none;">
+            Cargando...
+            <progress id="loadingProgress" max="100" value="0"></progress>
         </div>
-        <div class="plan">
-            <img src="pack3.jpeg" alt="Plan 3" class="plan-image">
-            <h2>Pack 3</h2>
-            <p>5000 Leads por 499€</p>
-            <p class="price">499€</p>
-        </div>
+        <table id="leadsTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Número</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se mostrarán los resultados de los leads -->
+            </tbody>
+        </table>
     </div>
+
+    <script>
+        document.getElementById('extractButton').addEventListener('click', function () {
+            // Aquí puedes agregar la lógica para extraer los leads y llenar la tabla.
+            // Por simplicidad, aquí simplemente mostramos una barra de progreso y una tabla vacía.
+            document.getElementById('progress').style.display = 'block';
+            document.getElementById('leadsTable').style.display = 'none';
+
+            let progress = 0;
+            const loadingProgress = document.getElementById('loadingProgress');
+
+            const interval = setInterval(function () {
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    document.getElementById('progress').style.display = 'none';
+                    document.getElementById('leadsTable').style.display = 'block';
+
+                    const leadData = [
+                            { usuario: 'Juan', email: 'juankar@gmail.com', numero: '67167167' },
+                            { usuario: 'Michael', email: 'michael@hotmail.com', numero: '60406060' },
+                            { usuario: 'Ana', email: 'ana@example.com', numero: '12345678' },
+                            { usuario: 'Elena', email: 'elena@example.com', numero: '98765432' },
+                        ];
+                        
+                        leadData.forEach(function (lead) {
+                            const row = leadsTable.insertRow(-1);
+                            const cell1 = row.insertCell(0);
+                            const cell2 = row.insertCell(1);
+                            const cell3 = row.insertCell(2);
+                            cell1.innerHTML = lead.usuario;
+                            cell2.innerHTML = lead.email;
+                            cell3.innerHTML = lead.numero;
+                        });
+                } else {
+                    progress += 10;
+                    loadingProgress.value = progress;
+                }
+            }, 500);
+        });
+    </script>
 </body>
 </html>
