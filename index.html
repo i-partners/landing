@@ -22,30 +22,62 @@
         }
         h1 {
             text-align: center;
-        }
-        .plan {
-            background-color: #333;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center; /* Para centrar verticalmente el contenido */
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            backdrop-filter: blur(20px);
-            flex-direction: column;
-        }
-        .plan h2 {
-            text-align: center;
-        }
-        .price {
-            text-align: center;
-        }
-        .plan-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 10px;
-            margin-right: 20px;
-        }
+       .plan {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.plan-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.price {
+    background-color: orange;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+.price:hover {
+    background-color: #ff6600; /* Color naranja más oscuro al pasar el cursor */
+}
+
+.button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #ff3300; /* Color naranja más oscuro al pasar el cursor */
+}
 
         .container-form {  /* Cambio de nombre del segundo container */
             max-width: 800px;
@@ -108,18 +140,21 @@
             <h2>Pack 1</h2>
             <p>1000 Leads por 199€ (1 Céntimo el Lead)</p>
             <p class="price">199€</p>
+             <button class="button">Comprar Ahora</button>
         </div>
         <div class="plan">
             <img src="pack2.jpeg" alt="Plan 2" class="plan-image">
             <h2>Pack 2</h2>
             <p>2500 Leads por 350€</p>
             <p class="price">350€</p>
+             <button class="button">Comprar Ahora</button>
         </div>
         <div class="plan">
             <img src="pack3.jpeg" alt="Plan 3" class="plan-image">
             <h2>Pack 3</h2>
             <p>5000 Leads por 499€</p>
             <p class="price">499€</p>
+             <button class="button">Comprar Ahora</button>
         </div>
     </div>
     <div class="container-form">
