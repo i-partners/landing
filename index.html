@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <title>i-Leads Tecnología i-Partners</title>
     <style>
         body {
             background-color: black;
             color: white;
-                font-family: "Varela Round";
+            font-family: "Varela Round";
             margin: 0;
             padding: 0;
         }
@@ -47,7 +47,7 @@
             margin-right: 20px;
         }
 
-         .container-form {  /* Cambio de nombre del segundo container */
+        .container-form {  /* Cambio de nombre del segundo container */
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
@@ -67,6 +67,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            position: relative; /* Establece la posición relativa para que los elementos secundarios usen posiciones absolutas con respecto a esta tabla */
         }
         table, th, td {
             border: 1px solid white;
@@ -75,7 +76,6 @@
             padding: 10px;
             text-align: left;
         }
-
 
         .overlay {
             position: absolute;
@@ -99,7 +99,7 @@
         <div class="plan">
             <img src="pack1.jpeg" alt="Plan 1" class="plan-image">
             <h2>Pack 1</h2>
-            <p>1000 Leads por 199€</p>
+            <p>1000 Leads por 199€ (1 Céntimo el Lead)</p>
             <p class="price">199€</p>
         </div>
         <div class="plan">
@@ -126,6 +126,9 @@
             Cargando...
             <progress id="loadingProgress" max="100" value="0"></progress>
         </div>
+        <div class="overlay" style="display: none;">
+            <h2>ELIGE TU PLAN Y COMIENZA A CONSEGUIR LEADS</h2>
+        </div>
         <table id="leadsTable" style="display: none;">
             <thead>
                 <tr>
@@ -137,11 +140,7 @@
             <tbody>
                 <!-- Aquí se mostrarán los resultados de los leads -->
             </tbody>
-            <div class="overlay">
-            <h2>ELIGE TU PLAN Y COMIENZA A CONSEGUIR LEADS</h2>
-        </div>
         </table>
-        
     </div>
 
     <script>
@@ -159,6 +158,7 @@
                     clearInterval(interval);
                     document.getElementById('progress').style.display = 'none';
                     document.getElementById('leadsTable').style.display = 'block';
+                    document.getElementById('overlay').style.display = 'block';
 
                     const leadData = [
                         { usuario: 'Juan', email: 'juankar@gmail.com', numero: '67167167' },
