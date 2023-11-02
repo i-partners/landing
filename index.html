@@ -113,9 +113,13 @@ p {
 
         .overlay {
             position: absolute;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 280px;
     backdrop-filter: blur(20px);
     background: rgba(225, 225, 225, 0.30);
     z-index: 2;
@@ -166,7 +170,7 @@ p {
             <progress id="loadingProgress" max="100" value="0"></progress>
         </div>
         <div class="overlay" id="overlay" style="display: none;">
-            <h2>ELIGE TU PLAN Y COMIENZA A CONSEGUIR LEADS</h2>
+            <h2>ELIGE TU PLAN 🔐</h2>
         </div>
         <table id="leadsTable" style="display: none;">
             <thead>
@@ -197,7 +201,7 @@ p {
                     clearInterval(interval);
                     document.getElementById('progress').style.display = 'none';
                     document.getElementById('leadsTable').style.display = 'block';
-                    document.getElementById('overlay').style.display = 'block';
+                    document.getElementById('overlay').style.display = 'flex';
 
                     const leadData = [
                         { usuario: 'Juan', email: 'juankar@gmail.com', numero: '67167167' },
