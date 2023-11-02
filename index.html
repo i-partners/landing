@@ -125,6 +125,8 @@ p {
             webkit-backdrop-filter: blur(20px);
     background: rgba(225, 225, 225, 0.30);
     z-index: 2;
+             background-image: url('lead3.jpg'); /* Agrega la ruta de tu imagen */
+    background-size: cover;
         }
         .price {
     text-align: center;
@@ -133,11 +135,21 @@ p {
     font-size: 20px; /* Tamaño de fuente de 20px */
 }
 
+        .responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px; /* Ajusta el margen superior según tus necesidades */
+}
+
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>1000 Clientes Cualificados de tu sector gracias a la inteligencia artificial</h1>
+        <img src="lead2.jpg" alt="Lead 2" class="responsive-image">
         <div class="plan">
             <img src="pack1.jpeg" alt="Plan 1" class="plan-image">
             <h2>Pack 1</h2>
