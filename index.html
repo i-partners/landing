@@ -17,12 +17,38 @@
             margin: 0 auto;
             padding: 20px;
         }
+        h1 {
+            text-align: center;
+        }
+        .plan {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center; /* Para centrar verticalmente el contenido */
+        }
+        .plan h2 {
+            text-align: center;
+        }
+        .price {
+            text-align: center;
+        }
+        .plan-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+         .container-form {  /* Cambio de nombre del segundo container */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
         .form-section {
             display: flex;
             flex-direction: column;
-        }
-        h1 {
-            text-align: center;
         }
         input {
             margin: 10px 0;
@@ -47,6 +73,27 @@
 </head>
 <body>
     <div class="container">
+        <h1>1000 Clientes Cualificados de tu sector gracias a la inteligencia artificial</h1>
+        <div class="plan">
+            <img src="imagen_plan1.jpg" alt="Plan 1" class="plan-image">
+            <h2>Pack 1</h2>
+            <p>1000 Leads por 199€ (1 Céntimo el Lead)</p>
+            <p class="price">199€</p>
+        </div>
+        <div class="plan">
+            <img src="imagen_plan2.jpg" alt="Plan 2" class "plan-image">
+            <h2>Pack 2</h2>
+            <p>2500 Leads por 350€</p>
+            <p class="price">350€</p>
+        </div>
+        <div class="plan">
+            <img src="imagen_plan3.jpg" alt="Plan 3" class="plan-image">
+            <h2>Pack 3</h2>
+            <p>5000 Leads por 499€</p>
+            <p class="price">499€</p>
+        </div>
+    </div>
+    <div class="container-form">
         <h1>Haz click y consigue los leads de tu competencia</h1>
         <div class="form-section">
             <input type="text" placeholder="Usuario de tu competencia">
@@ -74,7 +121,7 @@
     <script>
         document.getElementById('extractButton').addEventListener('click', function () {
             // Aquí puedes agregar la lógica para extraer los leads y llenar la tabla.
-            // Por simplicidad, aquí simplemente mostramos una barra de progreso y una tabla vacía.
+            // Por simplicidad, aquí simplemente mostramos una barra de progreso y una tabla con datos de ejemplo.
             document.getElementById('progress').style.display = 'block';
             document.getElementById('leadsTable').style.display = 'none';
 
@@ -88,21 +135,23 @@
                     document.getElementById('leadsTable').style.display = 'block';
 
                     const leadData = [
-                            { usuario: 'Juan', email: 'juankar@gmail.com', numero: '67167167' },
-                            { usuario: 'Michael', email: 'michael@hotmail.com', numero: '60406060' },
-                            { usuario: 'Ana', email: 'ana@example.com', numero: '12345678' },
-                            { usuario: 'Elena', email: 'elena@example.com', numero: '98765432' },
-                        ];
-                        
-                        leadData.forEach(function (lead) {
-                            const row = leadsTable.insertRow(-1);
-                            const cell1 = row.insertCell(0);
-                            const cell2 = row.insertCell(1);
-                            const cell3 = row.insertCell(2);
-                            cell1.innerHTML = lead.usuario;
-                            cell2.innerHTML = lead.email;
-                            cell3.innerHTML = lead.numero;
-                        });
+                        { usuario: 'Juan', email: 'juankar@gmail.com', numero: '67167167' },
+                        { usuario: 'Michael', email: 'michael@hotmail.com', numero: '60406060' },
+                        { usuario: 'Ana', email: 'ana@example.com', numero: '12345678' },
+                        { usuario: 'Elena', email: 'elena@example.com', numero: '98765432' },
+                    ];
+
+                    const leadsTable = document.getElementById('leadsTable').getElementsByTagName('tbody')[0];
+
+                    leadData.forEach(function (lead) {
+                        const row = leadsTable.insertRow(-1);
+                        const cell1 = row.insertCell(0);
+                        const cell2 = row.insertCell(1);
+                        const cell3 = row.insertCell(2);
+                        cell1.innerHTML = lead.usuario;
+                        cell2.innerHTML = lead.email;
+                        cell3.innerHTML = lead.numero;
+                    });
                 } else {
                     progress += 10;
                     loadingProgress.value = progress;
