@@ -91,6 +91,13 @@
             background: rgba(225, 225, 225, 0.30);
             z-index: 2;
         }
+        .price {
+    text-align: center;
+    background-color: orange; /* Fondo naranja */
+    cursor: pointer; /* Cambio de cursor a pointer */
+    font-size: 20px; /* Tamaño de fuente de 20px */
+}
+
     </style>
 </head>
 <body>
@@ -118,7 +125,7 @@
     <div class="container-form">
         <h1>Haz click y consigue los leads de tu competencia</h1>
         <div class="form-section">
-            <input type="text" placeholder="Usuario de tu competencia">
+            <input type="text" placeholder="Usuario de tu competencia" required>
             <input type="text" placeholder="Usuario de tu competencia">
             <button id="extractButton">Extraer Leads</button>
         </div>
@@ -126,7 +133,7 @@
             Cargando...
             <progress id="loadingProgress" max="100" value="0"></progress>
         </div>
-        <div class="overlay" style="display: none;">
+        <div class="overlay" id="overlay" style="display: none;">
             <h2>ELIGE TU PLAN Y COMIENZA A CONSEGUIR LEADS</h2>
         </div>
         <table id="leadsTable" style="display: none;">
