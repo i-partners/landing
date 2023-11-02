@@ -72,6 +72,20 @@
             padding: 10px;
             text-align: left;
         }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(225, 225, 225, 0.30);
+            z-index: 2;
+        }
     </style>
 </head>
 <body>
@@ -84,12 +98,12 @@
             <p class="price">199€</p>
         </div>
         <div class="plan">
-            <img src="pack2.jpeg" alt="Plan 2" class "plan-image">
+            <img src="pack2.jpeg" alt="Plan 2" class="plan-image">
             <h2>Pack 2</h2>
             <p>2500 Leads por 350€</p>
             <p class="price">350€</p>
         </div>
-        <div class="plan">
+        <div class "plan">
             <img src="pack3.jpeg" alt="Plan 3" class="plan-image">
             <h2>Pack 3</h2>
             <p>5000 Leads por 499€</p>
@@ -119,6 +133,9 @@
                 <!-- Aquí se mostrarán los resultados de los leads -->
             </tbody>
         </table>
+        <div class="overlay">
+            <h2>ELIGE TU PLAN Y COMIENZA A CONSEGUIR LEADS</h2>
+        </div>
     </div>
 
     <script>
@@ -135,7 +152,7 @@
                 if (progress >= 100) {
                     clearInterval(interval);
                     document.getElementById('progress').style.display = 'none';
-                    document.getElementById('leadsTable').style.display = 'block';
+                    document.getElementById('leadsTable').style display = 'block';
 
                     const leadData = [
                         { usuario: 'Juan', email: 'juankar@gmail.com', numero: '67167167' },
