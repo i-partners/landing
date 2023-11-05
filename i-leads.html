@@ -668,7 +668,7 @@ footer p {
             document.getElementById('myForm').addEventListener('submit', function(event) {
                 event.preventDefault();
 
-                emailjs.sendForm('service_yjv3csk', 'template_6p4nxd5', this)
+                emailjs.sendForm('service_yjv3csk', 'template_21pj2sk', this)
                     .then(function(response) {
                         console.log('Correo electrónico enviado', response);
                         document.getElementById('mensaje').innerHTML = 'Mensaje enviado con éxito. Gracias.';
