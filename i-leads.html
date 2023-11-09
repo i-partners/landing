@@ -389,6 +389,20 @@ footer p {
     margin: 0;
 }
 
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporción 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -545,7 +559,12 @@ footer p {
             <p>Solo tienes que elegir el pack que te interesa rellenar el formulario y finalizar tu compra! BOOM 💥 en 48 horas tienes tus Leads en tu Bandeja de Correo.</p>
         </div>
     </div>
-
+<div class="video-container">
+        <iframe src="https://youtu.be/K1uvAiR05Cg" frameborder="0" allowfullscreen></iframe>
+    </div>
+<div class="video-container">
+        <iframe src="https://youtu.be/DhQ8dCE-5C4" frameborder="0" allowfullscreen></iframe>
+    </div>
     
    <div class="formulario">
         <h2>Contact Us</h2>
