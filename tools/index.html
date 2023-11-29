@@ -37,12 +37,19 @@
         }
 
         .box-generador {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        flex-wrap: nowrap; /* Valor por defecto para pantallas anchas */
+    }
+
+    @media (max-width: 750px) {
+        .box-generador {
+            flex-wrap: wrap; /* Cambia a wrap en pantallas de 750px o menos */
         }
+    }
 
         .texto-generador {
             max-width: 100%;
