@@ -244,6 +244,29 @@ input[type="text"] {
     });
 
 
+    const copiarEnlaceButton = document.getElementById("copiar-enlace");
+
+    copiarEnlaceButton.addEventListener("click", function () {
+        // Selecciona el texto en el campo de entrada
+        enlaceInput.select();
+        enlaceInput.setSelectionRange(0, 99999); // Para dispositivos móviles
+
+        // Copia el texto al portapapeles
+        document.execCommand("copy");
+
+        // Deselecciona el campo de entrada
+        enlaceInput.blur();
+
+        // Cambia el texto del botón brevemente para indicar que se ha copiado
+        copiarEnlaceButton.textContent = "Enlace Copiado";
+
+        // Restaura el texto del botón después de un breve retraso
+        setTimeout(function () {
+            copiarEnlaceButton.textContent = "Copiar";
+        }, 1500); // 1.5 segundos
+    });
+
+
 </script>
 
 </body>
