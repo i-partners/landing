@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="matchpoint.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Agencia Growth Partners</title>
+    <style>
+      /* Estilos generales para el header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    color: #fff;
+    margin: 0;
+}
+
+    body{
+        font-family: 'Raleway', sans-serif;
+    margin: 0 ;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+/* Estilos para el menú en dispositivos móviles */
+.menu-icon {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 3px 0;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+li a{
+    color: white;
+    text-decoration: none;
+}
+
+/* Estilos para el submenú */
+.submenu {
+    position: relative;
+}
+
+.submenu-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    list-style: none;
+    padding: 10px;
+}
+
+.submenu:hover .submenu-list {
+    display: block;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        padding: 20px;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: flex;
+    }
+
+    .submenu-list {
+        position: static;
+        display: block;
+        background-color: transparent;
+        padding: 0;
+    }
+}
+
+        /* Estilos para la sección de bienvenida */
+.bienvenida {
+    background-color: black;
+    color: white;
+    padding: 100px;
+    text-align: left;
+}
+
+.bienvenida h1 {
+    font-size: 63px;
+    margin: 0;
+}
+
+.bienvenida p {
+    font-size: 45px;
+}
+
+        /* Media query para dispositivos con ancho de pantalla menor a 600px */
+@media (max-width: 600px) {
+    .bienvenida{
+        padding: 20px;
+    }
+    
+    .bienvenida h1 {
+        font-size: 63px; /* Tamaño de fuente para pantallas pequeñas */
+    }
+
+    .bienvenida p {
+        font-size: 35px; /* Tamaño de fuente para pantallas pequeñas */
+    }
+}
+
+        /* Estilos generales para la sección de fotos */
+.fotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Estilos para cada foto */
+.foto {
+    position: relative;
+    margin: 10px;
+}
+
+.foto img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Capa negra transparente superpuesta */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Negro con transparencia del 50% */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Mostrar la capa negra al pasar el ratón o tocar en dispositivos móviles */
+.foto:hover .overlay {
+    opacity: 1;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .foto {
+        width: 100%;
+    }
+}
+
+
+/* Estilos para la sección 2 */
+.seccion-2 {
+    background-color: white;
+    color: black;
+}
+
+/* Estilos para el contenido dentro de las secciones */
+.contenido {
+    text-align: center;
+}
+
+.contenido h2 {
+    font-size: 24px;
+}
+
+/* Estilos para los divs en dispositivos móviles */
+@media (max-width: 600px) {
+    .divs {
+        flex-direction: column;
+    }
+
+    .divs div {
+   
+        padding: 20px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+    }
+
+    .divs div i {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+    .divs h3 {
+        font-size: 18px;
+    }
+}
+
+        /* Estilos para los divs cuando la pantalla es más grande que 600px */
+@media (min-width: 601px) {
+    .divs {
+        display: flex;
+        flex-direction: row; /* Alinear en fila */
+        justify-content: space-between; /* Distribuir el espacio entre los divs */
+    }
+
+    .divs div {
+        width: calc(50% - 5px); /* El 5px es para acomodar el borde y el padding */
+        padding: 5px; /* Padding 5px */
+        text-align: center; /* Centrar contenido horizontalmente */
+        border: 1px solid black; /* Borde 1px sólido negro */
+    }
+
+     .box-partners{
+    display: flex;
+}
+}
+
+
+        /* Estilos para la sección 1 */
+.seccion-1 {
+    background-color: black;
+    font-size: 45px;
+    padding: 100px;
+      height: 500px; /* Altura deseada para cada sección */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Media query para dispositivos con un ancho de pantalla menor a 600px */
+@media (max-width: 600px) {
+    .seccion-1 {
+        font-size: 24px; /* Cambio de tamaño de fuente para dispositivos móviles */
+        padding: 20px; /* Cambio de padding para dispositivos móviles */
+    }
+
+   
+}
+
+/* Estilos generales para la sección */
+.metodologia {
+    padding: 20px;
+    text-align: center;
+    background: black;
+    color: white;
+}
+
+/* Estilos para el encabezado h1 */
+.metodologia h1 {
+    font-size: 45px;
+}
+
+/* Estilos para cada div con clase "ipartner" */
+.ipartner {
+       margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    position: relative;
+    color: white;
+}
+
+.ipartner img {
+    width: 50%;
+    border-radius: 50%;
+}
+
+.ipartner p {
+    margin: 10px 0;
+}
+
+/* Estilos para los divs con clase "paso" */
+.paso {
+   position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    border: 3px solid orange;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 600px) {
+    /* Centrar h1 en dispositivos móviles y cambiar tamaño de fuente */
+    .metodologia h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+    
+
+/* Media query para pantallas más grandes (mayor a 600px) */
+@media (min-width: 601px) {
+    /* Cambiar disposición de los divs a fila */
+    .metodologia {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    /* Restaurar el ancho original de los divs .ipartner */
+    .ipartner {
+        width: calc(50% - 20px);
+    }
+}
+
+   /* Estilos para la sección "historia" */
+.historia {
+    background-color: #f7f7f7; /* Color de fondo */
+    padding: 20px; /* Espacio alrededor del contenido */
+    text-align: center; /* Alineación del texto en el centro */
+}
+
+/* Estilos para el encabezado h1 en la sección "historia" */
+.historia h1 {
+    font-size: 45px; /* Tamaño de fuente */
+    margin: 20px 0; /* Márgenes superior e inferior */
+}
+
+/* Estilos para los párrafos p en la sección "historia" */
+.historia p {
+    font-size: 16px; /* Tamaño de fuente */
+    margin: 20px 0; /* Márgenes superior e inferior */
+}
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 600px) {
+    .historia {
+        text-align: left; /* Alinear texto a la izquierda en dispositivos móviles */
+    }
+     .historia h1 {
+        font-size: 24px; /* Tamaño de fuente para dispositivos móviles */
+    }
+}
+
+
+
+/* Estilos para la sección "compromiso" */
+.compromiso {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.compromiso h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para los divs dentro de la sección "compromiso" */
+.compromiso .divs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.compromiso .compromiso-div {
+    width: calc(33.33% - 20px);
+    padding: 20px;
+    text-align: left;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+}
+
+.compromiso .compromiso-div h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.compromiso .compromiso-div p {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+    .compromiso .divs {
+        flex-direction: column;
+    }
+
+    .compromiso .compromiso-div {
+        width: 90%;
+        margin-bottom: 20px;
+        display: block;
+    }
+}
+/* Media query para pantallas más grandes (mayor a 600px) */
+@media (min-width: 601px) {
+    .compromiso {
+        background-color: black; /* Mantener fondo negro */
+        color: white; /* Mantener texto blanco */
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="i-Partners.png" alt="Logo de Mi Sitio Web">
+        </div>
+        <nav>
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu">
+                <li><a href="#">Clientes</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li class="submenu">
+                    <a href="#">Servicios</a>
+                    <ul class="submenu-list">
+                        <li><a href="#">I-Partners</a></li>
+                        <li><a href="#">I-Sales</a></li>
+                        <li><a href="#">I-Talent</a></li>
+                        <li><a href="#">I-Landing</a></li>
+                        <li><a href="#">I-Automation</a></li>
+                        <li><a href="#">I-Assistant</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+     <section class="bienvenida">
+        <div class="container">
+            <h1>Bienvenidos a i-Partners</h1>
+            <p>La agencia de marketing growth certificada por Google y Facebook y destacada en el mercado.</p>
+        </div>
+    </section>
+    <section class="fotos">
+    <div class="foto">
+        <img src="imagen1.png" alt="Imagen 1">
+        <div class="overlay"></div>
+    </div>
+    <div class="foto">
+        <img src="imagen2.png" alt="Imagen 2">
+        <div class="overlay"></div>
+    </div>
+</section>
+  <section class="seccion-1">
+        <div class="contenido">
+            <h1>Automatiza tu Negocio al Completo</h1>
+            <p>y Crea un sistema infalible de ventas en tres meses</p>
+        </div>
+    </section>
+
+ <section class="seccion-2">
+    <div class="contenido">
+        <h2>¿Te sientes identificado?</h2>
+        <div class="divs">
+            <div>
+                <i class="fas fa-check-circle"></i>
+                <h3>Tienes tanto trabajo dando un servicio de calidad que no tienes tiempo para el proceso comercial. Ni tampoco sabes cómo hacerlo bien.</h3>
+            </div>
+            <div>
+                <i class="fas fa-check-circle"></i>
+                <h3>Has trabajado con agencias que no te han dado buenos resultados.</h3>
+            </div>
+            <div>
+                <i class="fas fa-check-circle"></i>
+                <h3>Conversaciones y llamadas de clientes potenciales olvidadas y sin un orden.</h3>
+            </div>
+            <div>
+                <i class="fas fa-check-circle"></i>
+                <h3>Sabes que tu negocio puede dar mejores resultados pero no tienes una guía paso a paso de cómo automatizar y crear una estrategia digital que funcione.</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="metodologia">
+        <h1>Nuestra Metodología I-Sales</h1>
+   <div class="box-partners">
+        <div class="ipartner">
+        <img src="paso1.png" alt="Paso 1">
+        <p>Flujos de Ventas en todos los recursos que tengas: Base de Datos, Emailing, Whatsapp, Llamada con una comunicación preparada para cada</p>
+        <div class="paso">1</div>
+    </div>
+    <div class="ipartner">
+        <img src="paso2.png" alt="Paso 2">
+        <p>Creamos un Calendario de Ventas con el cuál aterrizamos en tareas diarias, definidas con objetivos reales y alcanzables</p>
+        <div class="paso">2</div>
+    </div>
+    <div class="ipartner">
+        <img src="paso3.png" alt="Paso 3">
+        <p>Formación en CRM y Set up de tu proyecto. Se realiza una formación a la persona encargada de las ventas para plasmar todo el proceso y el trabajo diario</p>
+        <div class="paso">3</div>
+    </div>
+    <div class="ipartner">
+        <img src="paso4.png" alt="Paso 4">
+        <p>Traemos Leads cualificados y te damos garantías de ello. Te lo entregamos en Nuestro CRM en base a tu flujo de trabajo.</p>
+        <div class="paso">4</div>
+    </div>
+    <div class="ipartner">
+        <img src="paso5.png" alt="Paso 5">
+        <p>Seguimiento: En un determinado tiempo veremos resultados, analizaremos a partir de 100 impactos para sacar conclusiones.</p>
+        <div class="paso">5</div>
+    </div>
+    <div class="ipartner">
+        <img src="imagen6.jpg" alt="Paso 6">
+        <p>Te indicamos las nuevas estrategias a realizar entrando en un punto de nuevos procesos, activos, planes, etc...</p>
+        <div class="paso">6</div>
+    </div>
+   </div>
+</section>
+<section class="historia" style="margin: 10px; padding: 10px; background: white;">
+    <h1>Cómo generamos miles de leads para nuestros clientes de manera recurrente.</h1>
+    <p>Si tienes una pequeña o mediana empresa seguramente has trabajado con agencias o community managers "expertos en redes sociales" que no obtienen ninguna venta. ¿Te suena familiar?</p>
+    <p>El 90% de agencias no saben medir tu rentabilidad. Se dedican a subir bonitas publicaciones en redes pero no tienen idea sobre marketing performance.</p>
+</section>
+<section class="compromiso" style="padding: 10px; background: black; color: white; text-align: center; font-size: 25px">
+    <h1>Compromete más a tu cliente potencial con los procesos que te damos para cerrar.</h1>
+    <div class="divs">
+        <div class="compromiso-div">
+            <h3>FREELANCE</h3>
+            <p>Los profesionales independientes suelen entregar esos leads a través de email. Se pierden tiempos y leads en el camino.</p>
+        </div>
+        <div class="compromiso-div">
+            <h3>AGENCIAS</h3>
+            <p>Las agencias no se encargan de los procesos comerciales, no son rentables para ellas y no es su especialidad. Pueden cualificar el lead hasta un punto después depende de la empresa.</p>
+        </div>
+        <div class="compromiso-div">
+            <h3>CLOSER</h3>
+            <p>Tener un "closer" (un comercial digital) externo conlleva a depender de este, son grandes profesionales por tanto tienen que sacar una buena comisión.</p>
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+        <p>&copy; 2023 i-Partners. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+
+       // JavaScript para mostrar/ocultar el menú en dispositivos móviles
+
+const menuIcon = document.querySelector(".menu-icon");
+const menu = document.querySelector(".menu");
+
+menuIcon.addEventListener("click", () => {
+    menu.classList.toggle("active");
+});
+
+
+        
+
+    </script>
+</body>
+</html>
