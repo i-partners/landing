@@ -191,6 +191,34 @@ input[type="text"] {
     mensajeInput.addEventListener("input", () => {
         mensajeVisto.textContent = mensajeInput.value;
     });
+
+
+    const formulario = document.querySelector("form");
+    const telefonoInput = document.getElementById("telefono");
+
+    formulario.addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita el envío predeterminado del formulario
+        
+        // Obtén el valor del teléfono y elimina espacios
+        let telefono = telefonoInput.value.replace(/\s+/g, '');
+        
+        // Verifica si el teléfono comienza con el símbolo "+"
+        if (telefono.startsWith("+")) {
+            // Verifica si la longitud del teléfono es de máximo 15 dígitos
+            if (telefono.length <= 15) {
+                // Si la validación es exitosa, puedes continuar con el envío del formulario
+                formulario.submit();
+            } else {
+                // Si el teléfono tiene más de 15 dígitos, muestra un mensaje de error
+                alert("El teléfono no debe tener más de 15 dígitos.");
+            }
+        } else {
+            // Si el teléfono no comienza con "+", muestra un mensaje de error
+            alert("El teléfono debe comenzar con el símbolo '+'");
+        }
+    });
+
+
 </script>
 
 </body>
