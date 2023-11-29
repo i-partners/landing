@@ -112,6 +112,37 @@
     text-align: left;
     width: 90%;
         }
+
+.caja-enlace {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#copiar-enlace {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#copiar-enlace:hover {
+    background-color: #0056b3;
+}
+
     </style>
 </head>
 <body>
@@ -136,5 +167,10 @@
             </div>
         </div>
     </div>
+     <div class="caja-enlace" style="display:none">
+    <input type="text" id="enlace">
+    <button id="copiar-enlace">Copiar Enlace</button>
+</div>
+
 </body>
 </html>
