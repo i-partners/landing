@@ -49,6 +49,11 @@
         .box-generador {
             flex-wrap: wrap; /* Cambia a wrap en pantallas de 750px o menos */
         }
+
+     .whatsapp h1 {
+    font-size: 31px;
+    margin-bottom: 10px;
+}
     }
 
         .texto-generador {
@@ -114,19 +119,22 @@
         }
 
 .caja-enlace {
-    background-color: #fff;
+        background-color: #fff;
     border: 1px solid #ccc;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 0px;
+    /* margin-top: 20px; */
     display: flex;
     align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 input[type="text"] {
     flex-grow: 1;
-    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+     margin: 0;
 }
 
 #copiar-enlace {
@@ -134,7 +142,6 @@ input[type="text"] {
     color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 5px 10px;
     margin-left: 10px;
     cursor: pointer;
 }
