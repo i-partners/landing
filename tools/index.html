@@ -193,29 +193,28 @@ input[type="text"] {
     });
 
 
-    const formulario = document.querySelector("form");
-    const telefonoInput = document.getElementById("telefono");
+  const telefonoInput = document.getElementById("telefono");
 
-    formulario.addEventListener("submit", function (event) {
-        event.preventDefault(); // Evita el envío predeterminado del formulario
-        
-        // Obtén el valor del teléfono y elimina espacios
+    telefonoInput.addEventListener("input", function () {
+        // Obtén el valor del teléfono y elimina cualquier espacio en blanco
         let telefono = telefonoInput.value.replace(/\s+/g, '');
         
+        // Utiliza una expresión regular para eliminar cualquier caracter no numérico ni el símbolo "+"
+        telefono = telefono.replace(/[^0-9+]/g, '');
+
         // Verifica si el teléfono comienza con el símbolo "+"
         if (telefono.startsWith("+")) {
-            // Verifica si la longitud del teléfono es de máximo 15 dígitos
-            if (telefono.length <= 15) {
-                // Si la validación es exitosa, puedes continuar con el envío del formulario
-                formulario.submit();
-            } else {
-                // Si el teléfono tiene más de 15 dígitos, muestra un mensaje de error
-                alert("El teléfono no debe tener más de 15 dígitos.");
+            // Limita la longitud máxima del teléfono a 15 dígitos
+            if (telefono.length > 15) {
+                telefono = telefono.slice(0, 15);
             }
         } else {
-            // Si el teléfono no comienza con "+", muestra un mensaje de error
-            alert("El teléfono debe comenzar con el símbolo '+'");
+            // Si el teléfono no comienza con "+", agrega el símbolo "+"
+            telefono = "+" + telefono;
         }
+
+        // Actualiza el valor del campo de entrada con el teléfono formateado
+        telefonoInput.value = telefono;
     });
 
 
