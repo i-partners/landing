@@ -163,7 +163,7 @@ input[type="text"] {
         </div>
         <div class="imagen-generador">
             <div class="mensaje-whatsapp">
-                <p id="mensaje">Aquí el mensaje</p>
+                <p id="mensajeVisto">Aquí el mensaje</p>
             </div>
         </div>
     </div>
@@ -171,6 +171,14 @@ input[type="text"] {
     <input type="text" id="enlace">
     <button id="copiar-enlace">Copiar Enlace</button>
 </div>
+<script>
+    const mensajeInput = document.getElementById("mensaje");
+    const mensajeVisto = document.getElementById("mensajeVisto");
+
+    mensajeInput.addEventListener("input", () => {
+        mensajeVisto.textContent = mensajeInput.value;
+    });
+</script>
 
 </body>
 </html>
