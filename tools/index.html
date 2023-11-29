@@ -171,7 +171,7 @@ input[type="text"] {
                 <input type="text" id="telefono" name="telefono" placeholder="Añade el dígito, ejemplo: +34" required>
                 <label for="mensaje">Mensaje:</label>
                 <input type="text" id="mensaje" name="mensaje" placeholder="Puedes usar Emojics 😛🚀" required>
-                <button type="submit">Generar Enlace</button>
+                <button type="submit" id="generar">Generar Enlace</button>
             </form>
         </div>
         <div class="imagen-generador">
@@ -215,6 +215,30 @@ input[type="text"] {
 
         // Actualiza el valor del campo de entrada con el teléfono formateado
         telefonoInput.value = telefono;
+    });
+
+
+    const generarButton = document.getElementById("generar");
+    const cajaEnlace = document.querySelector(".caja-enlace");
+    const enlaceInput = document.getElementById("enlace");
+    const telefonoInput = document.getElementById("telefono");
+    const mensajeInput = document.getElementById("mensaje");
+
+    generarButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Evita que el formulario se envíe y la página se refresque
+        
+        // Obtiene los valores del teléfono y el mensaje
+        const telefono = telefonoInput.value;
+        const mensaje = mensajeInput.value.replace(/ /g, "%20"); // Reemplaza espacios por %20 en el mensaje
+        
+        // Crea el enlace de WhatsApp
+        const enlaceWhatsApp = "https://api.whatsapp.com/send?phone=" + telefono + "&text=" + mensaje;
+        
+        // Asigna el enlace generado al input
+        enlaceInput.value = enlaceWhatsApp;
+        
+        // Muestra la caja de enlace
+        cajaEnlace.style.display = "flex";
     });
 
 
