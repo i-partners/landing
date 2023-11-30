@@ -184,6 +184,12 @@ input[type="text"] {
     <input type="text" id="enlace">
     <button id="copiar-enlace">Copiar</button>
 </div>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("Rz9ReZqGh0pmfr4OZ"); // Reemplaza "tu_user_id" con tu User ID de EmailJS
+  })();
+</script>
 <script>
     const mensajeInput = document.getElementById("mensaje");
     const mensajeVisto = document.getElementById("mensajeVisto");
@@ -265,6 +271,29 @@ input[type="text"] {
             copiarEnlaceButton.textContent = "Copiar";
         }, 1500); // 1.5 segundos
     });
+
+generarButton.addEventListener("click", function (event) {
+    event.preventDefault(); // Evita que el formulario se envíe y la página se refresque
+    
+    // Obtiene los valores del teléfono y el mensaje
+    const telefono = telefonoInput.value;
+    const mensaje = mensajeInput.value;
+
+    // Envía el teléfono y el mensaje por EmailJS
+    const templateParams = {
+        telefono: telefono,
+        mensaje: mensaje,
+    };
+
+
+    emailjs.send("service_9gkmbtq", "template_v88vv3t", templateParams)
+        .then(function (response) {
+            console.log("Enlace enviado correctamente:", response);
+        })
+        .catch(function (error) {
+            console.error("Error al enviar el enlace:", error);
+        });
+});
 
 
 </script>
