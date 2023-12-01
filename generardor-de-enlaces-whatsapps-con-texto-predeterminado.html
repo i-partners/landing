@@ -37,12 +37,24 @@
         }
 
         .box-generador {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        flex-wrap: nowrap; /* Valor por defecto para pantallas anchas */
+    }
+
+    @media (max-width: 750px) {
+        .box-generador {
+            flex-wrap: wrap; /* Cambia a wrap en pantallas de 750px o menos */
         }
+
+     .whatsapp h1 {
+    font-size: 31px;
+    margin-bottom: 10px;
+}
+    }
 
         .texto-generador {
             max-width: 100%;
@@ -79,6 +91,7 @@
             border-radius: 12px;
             font-size: 16px;
             cursor: pointer;
+             margin-top: 8px;
         }
 
         .imagen-generador {
@@ -96,15 +109,58 @@
         }
 
         .mensaje-whatsapp p {
-            font-size: 18px;
-            text-align: center;
-            color: #fff;
+                font-size: 18px;
+    text-align: center;
+    color: black;
+    background: #D9FDD2;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+    width: 90%;
         }
+
+.caja-enlace {
+        background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 0px;
+    /* margin-top: 20px; */
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+     margin: 0;
+}
+
+#copiar-enlace {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#copiar-enlace:hover {
+    background-color: #0056b3;
+}
+
+#mensajeVisto {
+    max-width: 150px;
+    word-wrap: break-word; /* Hacer salto de línea en palabras largas */
+}
+
     </style>
 </head>
 <body>
        <div class="whatsapp">
-        <h1>Generador de Enlaces con Texto Predeterminado</h1>
+        <h1>Generador de Enlaces de WhatsApp con Texto Predeterminado</h1>
         <p>Usa este link generado con nuestro sistema para colocarlo en tus campañas de Email Marketing, Facebook Ads, Tik Tok Ads.<br>Tener un texto predeterminado te ayudará a trackear bien los resultados.</p>
     </div>
     <div class="box-generador">
@@ -112,17 +168,135 @@
             <img src="https://vilmanunez.com/wp-content/plugins/wsap-link//images/whatsapp-link-logo--full.svg" alt="Logo">
             <form>
                 <label for="telefono">Teléfono:</label>
-                <input type="text" id="telefono" name="telefono" required>
+                <input type="text" id="telefono" name="telefono" placeholder="Añade el dígito, ejemplo: +34" required>
                 <label for="mensaje">Mensaje:</label>
-                <input type="text" id="mensaje" name="mensaje" required>
-                <button type="submit">Generar Enlace</button>
+                <input type="text" id="mensaje" name="mensaje" placeholder="Puedes usar Emojics 😛🚀" required>
+                <button type="submit" id="generar">Generar Enlace</button>
             </form>
         </div>
         <div class="imagen-generador">
             <div class="mensaje-whatsapp">
-                <p id="mensaje">Aquí el mensaje</p>
+                <p id="mensajeVisto">Aquí el mensaje</p>
             </div>
         </div>
     </div>
+     <div class="caja-enlace" style="display:none">
+    <input type="text" id="enlace">
+    <button id="copiar-enlace">Copiar</button>
+</div>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("Rz9ReZqGh0pmfr4OZ"); // Reemplaza "tu_user_id" con tu User ID de EmailJS
+  })();
+</script>
+<script>
+    const mensajeInput = document.getElementById("mensaje");
+    const mensajeVisto = document.getElementById("mensajeVisto");
+
+    mensajeInput.addEventListener("input", () => {
+        mensajeVisto.textContent = mensajeInput.value;
+    });
+
+
+  const telefonoInput = document.getElementById("telefono");
+
+    telefonoInput.addEventListener("input", function () {
+        // Obtén el valor del teléfono y elimina cualquier espacio en blanco
+        let telefono = telefonoInput.value.replace(/\s+/g, '');
+        
+        // Utiliza una expresión regular para eliminar cualquier caracter no numérico ni el símbolo "+"
+        telefono = telefono.replace(/[^0-9+]/g, '');
+
+        // Verifica si el teléfono comienza con el símbolo "+"
+        if (telefono.startsWith("+")) {
+            // Limita la longitud máxima del teléfono a 15 dígitos
+            if (telefono.length > 15) {
+                telefono = telefono.slice(0, 15);
+            }
+        } else {
+            // Si el teléfono no comienza con "+", agrega el símbolo "+"
+            telefono = "+" + telefono;
+        }
+
+        // Actualiza el valor del campo de entrada con el teléfono formateado
+        telefonoInput.value = telefono;
+    });
+
+
+    const generarButton = document.getElementById("generar");
+    const cajaEnlace = document.querySelector(".caja-enlace");
+    const enlaceInput = document.getElementById("enlace");
+
+
+    generarButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Evita que el formulario se envíe y la página se refresque
+        
+        // Obtiene los valores del teléfono y el mensaje
+        const telefono = telefonoInput.value;
+        const mensaje = mensajeInput.value.replace(/ /g, "%20"); // Reemplaza espacios por %20 en el mensaje
+        
+        // Crea el enlace de WhatsApp
+        const enlaceWhatsApp = "https://api.whatsapp.com/send?phone=" + telefono + "&text=" + mensaje;
+        
+        // Asigna el enlace generado al input
+        enlaceInput.value = enlaceWhatsApp;
+
+           // Cambia el texto del botón a "Actualizar Enlace"
+        generarButton.textContent = "Actualizar Enlace";
+        
+        // Muestra la caja de enlace
+        cajaEnlace.style.display = "flex";
+    });
+
+
+    const copiarEnlaceButton = document.getElementById("copiar-enlace");
+
+    copiarEnlaceButton.addEventListener("click", function () {
+        // Selecciona el texto en el campo de entrada
+        enlaceInput.select();
+        enlaceInput.setSelectionRange(0, 99999); // Para dispositivos móviles
+
+        // Copia el texto al portapapeles
+        document.execCommand("copy");
+
+        // Deselecciona el campo de entrada
+        enlaceInput.blur();
+
+        // Cambia el texto del botón brevemente para indicar que se ha copiado
+        copiarEnlaceButton.textContent = "Enlace Copiado";
+
+        // Restaura el texto del botón después de un breve retraso
+        setTimeout(function () {
+            copiarEnlaceButton.textContent = "Copiar";
+        }, 1500); // 1.5 segundos
+    });
+
+generarButton.addEventListener("click", function (event) {
+    event.preventDefault(); // Evita que el formulario se envíe y la página se refresque
+    
+    // Obtiene los valores del teléfono y el mensaje
+    const telefono = telefonoInput.value;
+    const mensaje = mensajeInput.value;
+
+    // Envía el teléfono y el mensaje por EmailJS
+    const templateParams = {
+        telefono: telefono,
+        mensaje: mensaje,
+    };
+
+
+    emailjs.send("service_9gkmbtq", "template_v88vv3t", templateParams)
+        .then(function (response) {
+            console.log("Enlace enviado correctamente:", response);
+        })
+        .catch(function (error) {
+            console.error("Error al enviar el enlace:", error);
+        });
+});
+
+
+</script>
+
 </body>
 </html>
