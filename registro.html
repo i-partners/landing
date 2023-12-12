@@ -155,44 +155,54 @@
 
 
 
-    function enviarFormulario(event) {
-        event.preventDefault();
+  function enviarFormulario(event) {
+    event.preventDefault();
 
-        // Obtener datos del formulario
-        const nombre = document.getElementById('nombre').value;
-        const telefono = document.getElementById('telefono').value;
-        const email = document.getElementById('email').value;
-        const privacidad = document.getElementById('privacidad').checked;
+    // Obtener datos del formulario
+    const nombre = document.getElementById('nombre').value;
+    const telefono = document.getElementById('telefono').value;
+    const email = document.getElementById('email').value;
+    const privacidad = document.getElementById('privacidad').checked;
 
-        // Obtener el identificador aleatorio guardado en localStorage
-        const userID = localStorage.getItem('ID');
+    // Obtener el identificador aleatorio guardado en localStorage
+    const userID = localStorage.getItem('ID');
 
-        // Construir el objeto de datos a enviar a EmailJS y Zapier
-        const datos = {
-            nombre,
-            telefono,
-            email,
-            privacidad,
-            userID,
-        };
+    // Construir el objeto de datos a enviar a EmailJS y Zapier
+    const datos = {
+        nombre,
+        telefono,
+        email,
+        privacidad,
+        userID,
+    };
 
-        // Enviar datos a través de EmailJS (debes configurar tu cuenta y plantilla)
-        emailjs.send('service_bv4wz0r', 'template_2dk8vup', datos, 'b5uQJYNmoGOo4VAq4');
+    // Enviar datos a través de EmailJS (debes configurar tu cuenta y plantilla)
+    emailjs.send('service_bv4wz0r', 'template_2dk8vup', datos, 'b5uQJYNmoGOo4VAq4');
 
-        // Enviar datos a Zapier a través de Webhooks (reemplaza la URL con la tuya)
-        fetch('https://ahorrodirect.com/stripe/webhook-registro.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(datos),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Manejar la respuesta de Zapier si es necesario
-            console.log(data);
-        });
-    }
+    // Enviar datos a Zapier a través de Webhooks (reemplaza la URL con la tuya)
+    fetch('https://ahorrodirect.com/stripe/webhook-registro.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(datos),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Manejar la respuesta de Zapier
+        if (data.success) {
+            console.log('Se envió con éxito.');
+            // Redirigir a la URL deseada después de un éxito
+            window.location.href = 'https://ipartners.es/vsl.html';
+        } else {
+            console.log('No se envió correctamente. Razón:', data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error al enviar los datos:', error);
+    });
+}
+
 </script>
 <script>
 !function(f,b,e,v,n,t,s)
