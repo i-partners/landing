@@ -8,7 +8,7 @@
     <title>Landing Page</title>
     <style>
         body {
-             font-family: 'Raleway', sans-serif;
+            font-family: 'Raleway', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -23,9 +23,22 @@
             padding: 1em;
         }
 
-        .subgancho{
+        .subgancho {
             color: grey;
-    font-size: 26px;
+            font-size: 26px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        @media screen and (max-width: 500px) {
+            h1 {
+                font-size: 30px;
+            }
+            .subgancho {
+                font-size: 20px;
+            }
         }
 
         .ventajas {
@@ -36,15 +49,26 @@
 
         .ventajas ul li {
             font-size: 22px;
-    padding: 20px;
-    list-style: none;
-    font-weight: 600;
-}
+            padding: 20px;
+            list-style: none;
+            font-weight: 600;
+        }
 
-.ventajas ul li i{
+        .ventajas ul li i {
             font-size: 28px;
-    color: #63BC00;
-}
+            color: #63BC00;
+        }
+
+        @media screen and (max-width: 500px) {
+            .ventajas {
+                margin: 0;
+                padding: 0;
+            }
+            .ventajas ul {
+                padding: 0;
+                margin: 8px;
+            }
+        }
 
         form {
             display: flex;
@@ -53,26 +77,26 @@
         }
 
         input {
-               padding: 10px;
-    border-radius: 10px;
-    border: 1px solid grey;
-    width: 90%;
-    max-width: 700px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid grey;
+            width: 90%;
+            max-width: 700px;
             font-size: 17px;
-                margin: 6px;
+            margin: 6px;
         }
 
         button {
-                padding: 10px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 700px;
-    font-size: 17px;
-    margin: 11px;
-    background: #63BC00;
+            padding: 10px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 700px;
+            font-size: 17px;
+            margin: 11px;
+            background: #63BC00;
             cursor: pointer;
             border: none;
-    color: white;
+            color: white;
         }
     </style>
 </head>
