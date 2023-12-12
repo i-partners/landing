@@ -186,13 +186,13 @@ function enviarFormulario(event) {
         if (data.success) {
             console.log('Se envió con éxito a Zapier.');
             // Redirigir a la URL deseada después de un éxito
-            window.location.href = 'https://ipartners.es/vsl.html';
+           
         } else {
             console.log('No se envió correctamente a Zapier. Razón:', data.error);
         }
     })
     .catch(error => {
-        console.error('Error al enviar datos a Zapier:', error);
+         window.location.href = 'https://ipartners.es/vsl.html';
     });
 }
 </script>
