@@ -38,6 +38,7 @@
             font-size: 22px;
     padding: 20px;
     list-style: none;
+    font-weight: 600;
 }
 
 .ventajas ul li i{
@@ -51,8 +52,13 @@
             align-items: center;
         }
 
-        input, label {
-            margin-bottom: 10px;
+        input {
+               padding: 10px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    width: 90%;
+    max-width: 700px;
+            font-size: 17px;
         }
 
         button {
@@ -86,16 +92,11 @@
     </section>
 
     <section>
-        <h2>Formulario</h2>
+
         <form action="procesar_formulario.php" method="post">
-            <label for="nombre">Nombre Completo</label>
-            <input type="text" id="nombre" name="nombre" required>
-
-            <label for="telefono">Teléfono</label>
-            <input type="tel" id="telefono" name="telefono" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
+            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+            <input type="email" id="email" name="email" placeholder="Email Principal" required>
 
             <label>
                 <input type="checkbox" name="privacidad" required>
