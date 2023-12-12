@@ -123,8 +123,8 @@
 
  var iframe = document.getElementById('miIframe');
   var continuarButton = document.getElementById('continuarButton');
-  var startTime;
-  var localStorageID = localStorage.getItem('ID'); // Asegúrate de tener una clave llamada 'tuID' en localStorage
+  var startTime = new Date();
+  var localStorageID = localStorage.getItem('ID'); // Asegúrate de tener una clave llamada 'ID' en localStorage
 
   // Escucha el evento 'load' del iframe
   iframe.addEventListener('load', function() {
@@ -132,14 +132,14 @@
     startTime = new Date();
   });
 
-  // Escucha el clic en el iframe
-  iframe.addEventListener('click', function() {
+  // Escucha el clic en el botón "continuar"
+  continuarButton.addEventListener('click', function() {
     // Calcula el tiempo de visualización
     var endTime = new Date();
     var tiempoDeVisualizacion = endTime - startTime;
 
     // Realiza la solicitud HTTP a Zapier con la información
-    var webhookURL = 'https://hooks.zapier.com/hooks/catch/15157064/3ayo4jz/';
+    var webhookURL = `https://hooks.zapier.com/hooks/catch/15157064/3ayo4jz/?tiempoDeVisualizacion=${encodeURIComponent(tiempoDeVisualizacion)}&localStorageID=${encodeURIComponent(localStorageID)}`;
     var data = {
       tiempoVisualizacion: tiempoDeVisualizacion,
       localStorageID: localStorageID
@@ -161,13 +161,11 @@
     .catch((error) => {
       console.error('Error al realizar la solicitud:', error);
     });
-  });
 
-  // Escucha el clic en el botón "continuar"
-  continuarButton.addEventListener('click', function() {
-    // Puedes agregar aquí cualquier acción adicional que desees realizar al hacer clic en "continuar"
+    // Agrega cualquier acción adicional que desees realizar al hacer clic en "continuar"
+    // Por ejemplo, redirigir a otra página
+    window.location.href = 'https://ipartners.es/subida.html';
   });
-
 
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
