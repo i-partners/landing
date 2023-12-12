@@ -104,6 +104,7 @@
             margin: auto;
             padding: 20px;
             border: 3px solid black;
+            border-radius: 10px;
             text-align: center;
             cursor: pointer;
         }
@@ -115,7 +116,6 @@
 
         #iconoSubida {
             font-size: 100px;
-            color: white;
         }
 
         input[type="file"] {
@@ -131,7 +131,11 @@
  <section id="seccionSubida" onclick="document.getElementById('archivoInput').click();" ondragover="handleDragOver(event)" ondragleave="handleDragLeave()" ondrop="handleDrop(event)">
         <i id="iconoSubida" class="fas fa-plus"></i>
         <p>Arrastra y suelta tu archivo aquí<br/>o haz clic para seleccionar</p>
-        <input type="file" id="archivoInput" accept=".pdf, .jpg, .jpeg, .png, .txt" onchange="handleFileSelect(event)">
+       <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" id="archivoInput" accept=".pdf, .jpg, .jpeg, .png, .txt" onchange="handleFileSelect(event)">
+    <button id="continuarButton" onclick="uploadFile()">CONTINUAR A LA HERRAMIENTA</button>
+</form>
+
     </section>
 
 <button id="continuarButton">CONTINUAR A LA HERRAMIENTA</button>
@@ -163,6 +167,34 @@
             // por ejemplo, puedes acceder a la información del archivo con files[0]
             console.log(files[0].name);
         }
+
+
+function uploadFile() {
+    const filesInput = document.getElementById('archivoInput');
+    const files = filesInput.files;
+
+    if (files.length > 0) {
+        const formData = new FormData();
+        formData.append('archivo', files[0]);
+
+        fetch('subir.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.json())  // Si se espera una respuesta JSON
+        .then(data => {
+            console.log('Respuesta del servidor:', data);
+            // Puedes realizar acciones adicionales después de la subida del archivo aquí
+        })
+        .catch(error => {
+            console.error('Error al subir el archivo:', error);
+        });
+    } else {
+        console.error('No se ha seleccionado ningún archivo.');
+    }
+}
+
+
 
 
 !function(f,b,e,v,n,t,s)
