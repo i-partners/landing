@@ -95,7 +95,7 @@
             margin: 6px;
         }
 
-        button {
+        #continuar {
             padding: 10px;
             border-radius: 10px;
             width: 90%;
@@ -129,21 +129,20 @@
         </ul>
     </section>
 
-    <section>
+   <section>
+    <div class="formulario" id="formulario">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
+        <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+        <input type="email" id="email" name="email" placeholder="Email Principal" required>
 
-       <form  onsubmit="enviarFormulario(event)">
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
-            <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
-            <input type="email" id="email" name="email" placeholder="Email Principal" required>
+        <label>
+            <input type="checkbox" style="width: auto;" id="privacidad" name="privacidad" required>
+            He leído y acepto la <a href="https://ipartners.es/tools/" target="_blank">política de privacidad</a>
+        </label>
 
-            <label>
-                <input type="checkbox" style="width: auto;" id="privacidad" name="privacidad" required>
-                He leído y acepto la <a href="https://ipartners.es/tools/" target="_blank">política de privacidad</a>
-            </label>
-
-            <button type="submit">QUIERO TRANSFORMAR MI CARTA DIGITAL AHORA</button>
-        </form>
-    </section>
+        <div id="continuar" onclick="enviarFormulario()">QUIERO TRANSFORMAR MI CARTA DIGITAL AHORA</div>
+    </div>
+</section>
 <script>
 
 // Cargar EmailJS
@@ -153,44 +152,50 @@
 
 
 
-    function enviarFormulario(event) {
-        event.preventDefault();
+    function enviarFormulario() {
+    // Evitar que el formulario se envíe de manera convencional
+    // (evitar la recarga de la página)
+    event.preventDefault();
 
-        // Obtener datos del formulario
-        const nombre = document.getElementById('nombre').value;
-        const telefono = document.getElementById('telefono').value;
-        const email = document.getElementById('email').value;
-        const privacidad = document.getElementById('privacidad').checked;
+    // Obtener datos del formulario
+    const nombre = document.getElementById('nombre').value;
+    const telefono = document.getElementById('telefono').value;
+    const email = document.getElementById('email').value;
+    const privacidad = document.getElementById('privacidad').checked;
 
-        // Obtener el identificador aleatorio guardado en localStorage
-        const userID = localStorage.getItem('ID');
+    // Obtener el identificador aleatorio guardado en localStorage
+    const userID = localStorage.getItem('ID');
 
-        // Construir el objeto de datos a enviar a EmailJS y Zapier
-        const datos = {
-            nombre,
-            telefono,
-            email,
-            privacidad,
-            userID,
-        };
+    // Construir el objeto de datos a enviar a EmailJS y Zapier
+    const datos = {
+        nombre,
+        telefono,
+        email,
+        privacidad,
+        userID,
+    };
 
-        // Enviar datos a través de EmailJS (debes configurar tu cuenta y plantilla)
-        emailjs.send('service_bv4wz0r', 'template_2dk8vup', datos, 'b5uQJYNmoGOo4VAq4');
+    // Enviar datos a través de EmailJS (debes configurar tu cuenta y plantilla)
+    emailjs.send('service_bv4wz0r', 'template_2dk8vup', datos, 'b5uQJYNmoGOo4VAq4');
 
-        // Enviar datos a Zapier a través de Webhooks (reemplaza la URL con la tuya)
-        fetch('https://hooks.zapier.com/hooks/catch/15157064/3fvla4t/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(datos),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Manejar la respuesta de Zapier si es necesario
-            console.log(data);
-        });
-    }
+    // Enviar datos a Zapier a través de Webhooks (reemplaza la URL con la tuya)
+    fetch('https://hooks.zapier.com/hooks/catch/15157064/3fvla4t/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(datos),
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Manejar la respuesta de Zapier si es necesario
+        console.log(data);
+    });
+    
+    // Después de enviar los datos, redirigir a la página especificada
+    window.location.href = 'https://ipartners.es/vsl.html';
+}
+
 </script>
 <script>
 !function(f,b,e,v,n,t,s)
