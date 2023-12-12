@@ -133,12 +133,12 @@
         <p>Arrastra y suelta tu archivo aquí<br/>o haz clic para seleccionar</p>
        <form id="uploadForm" enctype="multipart/form-data">
     <input type="file" id="archivoInput" accept=".pdf, .jpg, .jpeg, .png, .txt" onchange="handleFileSelect(event)">
-    <button id="continuarButton" onclick="uploadFile()">CONTINUAR A LA HERRAMIENTA</button>
+    
 </form>
 
     </section>
 
-<button id="continuarButton">CONTINUAR A LA HERRAMIENTA</button>
+<button id="continuarButton" onclick="uploadFile()">CONTINUAR A LA HERRAMIENTA</button>
 <script>
 
  function handleDragOver(event) {
