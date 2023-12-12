@@ -110,15 +110,65 @@
 <div style="position: relative; width: 90%; height: 0; padding-top: 56.2500%;
  padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin: 0 auto; overflow: hidden;
  border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+  <iframe id="miIframe" loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
     src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF2zPWrPM0&#x2F;watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
   </iframe>
 </div>
 <div style="max-width: 700px; margin: 10px auto">
-<button>CONTINUAR A LA HERRAMIENTA</button>
+<button id="continuarButton">CONTINUAR A LA HERRAMIENTA</button>
 </div>
     </section>
 <script>
+
+
+ var iframe = document.getElementById('miIframe');
+  var continuarButton = document.getElementById('continuarButton');
+  var startTime;
+  var localStorageID = localStorage.getItem('ID'); // Asegúrate de tener una clave llamada 'tuID' en localStorage
+
+  // Escucha el evento 'load' del iframe
+  iframe.addEventListener('load', function() {
+    // Registra el tiempo de inicio cuando el iframe ha cargado
+    startTime = new Date();
+  });
+
+  // Escucha el clic en el iframe
+  iframe.addEventListener('click', function() {
+    // Calcula el tiempo de visualización
+    var endTime = new Date();
+    var tiempoDeVisualizacion = endTime - startTime;
+
+    // Realiza la solicitud HTTP a Zapier con la información
+    var webhookURL = 'https://hooks.zapier.com/hooks/catch/15157064/3ayo4jz/';
+    var data = {
+      tiempoVisualizacion: tiempoDeVisualizacion,
+      localStorageID: localStorageID
+    };
+
+    // Configura la solicitud HTTP
+    fetch(webhookURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Respuesta de Zapier:', data);
+      // Aquí puedes agregar cualquier otra acción que desees realizar con la respuesta de Zapier
+    })
+    .catch((error) => {
+      console.error('Error al realizar la solicitud:', error);
+    });
+  });
+
+  // Escucha el clic en el botón "continuar"
+  continuarButton.addEventListener('click', function() {
+    // Puedes agregar aquí cualquier acción adicional que desees realizar al hacer clic en "continuar"
+  });
+
+
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
