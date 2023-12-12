@@ -131,7 +131,7 @@
 
     <section>
 
-       <form id="miFormulario" onsubmit="enviarFormulario(event)">
+       <form  onsubmit="enviarFormulario(event)">
             <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
             <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
             <input type="email" id="email" name="email" placeholder="Email Principal" required>
@@ -151,10 +151,7 @@
             emailjs.init("b5uQJYNmoGOo4VAq4");  // Reemplaza "user_your_user_id" con tu User ID
         })();
 
-document.getElementById('miFormulario').addEventListener('submit', function (event) {
-            event.preventDefault();
-            enviarFormulario(event);
-        });
+
 
     function enviarFormulario(event) {
         event.preventDefault();
