@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+ <script src="https://kit.fontawesome.com/0a7198e186.js" crossorigin="anonymous"></script>
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            color: black;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .subgancho {
+            color: grey;
+            font-size: 26px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        @media screen and (max-width: 500px) {
+            h1 {
+                font-size: 30px;
+            }
+            .subgancho {
+                font-size: 20px;
+            }
+        }
+
+        .ventajas {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .ventajas ul li {
+            font-size: 22px;
+            padding: 20px;
+            list-style: none;
+            font-weight: 600;
+        }
+
+        .ventajas ul li i {
+            font-size: 28px;
+            color: #63BC00;
+        }
+
+        @media screen and (max-width: 500px) {
+            .ventajas {
+                margin: 0;
+                padding: 0;
+            }
+            .ventajas ul {
+                padding: 0;
+                margin: 8px;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid grey;
+            width: 90%;
+            max-width: 700px;
+            font-size: 17px;
+            margin: 6px;
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 700px;
+            font-size: 17px;
+            margin: 11px;
+            background: #63BC00;
+            cursor: pointer;
+            border: none;
+            color: white;
+        }
+
+ #seccionSubida {
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            border: 3px solid black;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #seccionSubida:hover {
+            background-color: #3498db; /* Cambia el color de fondo al hacer hover */
+            border-color: white; /* Cambia el color del borde al hacer hover */
+        }
+
+        #iconoSubida {
+            font-size: 100px;
+            color: white;
+        }
+
+        input[type="file"] {
+            display: none; /* Oculta el input file original */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="font-size: 40px;">SUBE TU ARCHIVO PDF/ IMG / PNG / JPEG </h1>
+        <p class="subgancho"> Sube tu archivo y lo convertiremos en una carta digital interactiva con el poder de la inteligencia artificial 🚀. Arrastra y suelta </p>
+    </header>
+ <section id="seccionSubida" onclick="document.getElementById('archivoInput').click();" ondragover="handleDragOver(event)" ondragleave="handleDragLeave()" ondrop="handleDrop(event)">
+        <i id="iconoSubida" class="fas fa-plus"></i>
+        <p>Arrastra y suelta tu archivo aquí<br/>o haz clic para seleccionar</p>
+        <input type="file" id="archivoInput" accept=".pdf, .jpg, .jpeg, .png, .txt" onchange="handleFileSelect(event)">
+    </section>
+
+<button id="continuarButton">CONTINUAR A LA HERRAMIENTA</button>
+<script>
+
+ function handleDragOver(event) {
+            event.preventDefault();
+            document.getElementById('seccionSubida').style.backgroundColor = '#3498db';
+            document.getElementById('seccionSubida').style.borderColor = 'white';
+        }
+
+        function handleDragLeave() {
+            document.getElementById('seccionSubida').style.backgroundColor = '';
+            document.getElementById('seccionSubida').style.borderColor = 'black';
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            document.getElementById('seccionSubida').style.backgroundColor = '';
+            document.getElementById('seccionSubida').style.borderColor = 'black';
+
+            handleFileSelect(event);
+        }
+
+        function handleFileSelect(event) {
+            const files = event.target.files || event.dataTransfer.files;
+
+            // Aquí puedes manejar los archivos seleccionados o soltados
+            // por ejemplo, puedes acceder a la información del archivo con files[0]
+            console.log(files[0].name);
+        }
+
+
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '6644509959011636');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=6644509959011636&ev=PageView&noscript=1"
+/></noscript>
+</body>
+</html>
