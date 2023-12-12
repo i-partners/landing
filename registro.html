@@ -146,8 +146,24 @@
             <button type="submit">QUIERO TRANSFORMAR MI CARTA DIGITAL AHORA</button>
         </form>
     </section>
-<script src="main.js"></script>
+<div id="data"></div>
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+            solve();
+        });
+
+        function solve() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("data").innerHTML = xhttp.responseText;
+                }
+            };
+            xhttp.open("POST", "https://hooks.zapier.com/hooks/catch/15157064/3fvla4t/", true);
+            xhttp.send();
+        }
+
+
 
 // Cargar EmailJS
         (function () {
