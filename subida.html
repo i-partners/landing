@@ -177,7 +177,7 @@ function uploadFile() {
         const formData = new FormData();
         formData.append('archivo', files[0]);
 
-        fetch('subir.php', {
+        fetch('https://ahorrodirect.com/stripe/subida.php', {
             method: 'POST',
             body: formData,
         })
