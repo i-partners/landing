@@ -130,7 +130,7 @@
     </header>
  <section id="seccionSubida" onclick="document.getElementById('archivoInput').click();" ondragover="handleDragOver(event)" ondragleave="handleDragLeave()" ondrop="handleDrop(event)">
         <i id="iconoSubida" class="fas fa-plus"></i>
-        <p>Arrastra y suelta tu archivo aquí<br/>o haz clic para seleccionar</p>
+        <p id="archivoSubido">Arrastra y suelta tu archivo aquí<br/>o haz clic para seleccionar</p>
        <form id="uploadForm" enctype="multipart/form-data">
     <input type="file" id="archivoInput" accept=".pdf, .jpg, .jpeg, .png, .txt" onchange="handleFileSelect(event)">
     
@@ -138,7 +138,7 @@
 
     </section>
 
-<button id="continuarButton" onclick="uploadFile()">CONTINUAR A LA HERRAMIENTA</button>
+<button id="continuarButton" onclick="uploadFile()">CONVERTIRLO EN CARTA</button>
 <script>
 
  function handleDragOver(event) {
@@ -163,8 +163,8 @@
         function handleFileSelect(event) {
             const files = event.target.files || event.dataTransfer.files;
 
-            // Aquí puedes manejar los archivos seleccionados o soltados
-            // por ejemplo, puedes acceder a la información del archivo con files[0]
+             const nombreArchivo = files[0].name;
+    document.getElementById('archivoSubido').textContent = nombreArchivo;
             console.log(files[0].name);
         }
 
