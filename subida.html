@@ -160,14 +160,18 @@
             handleFileSelect(event);
         }
 
-        function handleFileSelect(event) {
-            const files = event.target.files || event.dataTransfer.files;
+       function handleFileSelect(event) {
+    const files = event.target.files || event.dataTransfer.files;
 
-             const nombreArchivo = files[0].name;
-    document.getElementById('archivoSubido').textContent = nombreArchivo;
-            console.log(files[0].name);
-        }
+    // Aquí puedes manejar los archivos seleccionados o soltados
+    // por ejemplo, puedes acceder a la información del archivo con files[0]
+    const nombreArchivo = files[0].name;
 
+    // Sustituir el contenido del elemento con el id "archivoSubido"
+    document.getElementById('archivoSubido').innerText = `Archivo seleccionado: ${nombreArchivo}`;
+
+    console.log(nombreArchivo);
+}
 
 function uploadFile() {
     const filesInput = document.getElementById('archivoInput');
