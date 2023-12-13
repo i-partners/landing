@@ -181,19 +181,46 @@ function uploadFile() {
             method: 'POST',
             body: formData,
         })
-        .then(response => response.json())  // Si se espera una respuesta JSON
+        .then(response => response.json())
         .then(data => {
             console.log('Respuesta del servidor:', data);
-            // Puedes realizar acciones adicionales después de la subida del archivo aquí
+
+            // Verificar si la carga fue exitosa
+            if (data.mensaje) {
+                const urlArchivo = 'https://ahorrodirect.com/stripe/archivos_subidos/' + files[0].name;
+
+                // Enviar la URL a través de un webhook (usando cURL)
+                const webhookUrl = 'https://hooks.zapier.com/hooks/catch/15157064/3aybr78/';
+                const webhookData = { url: urlArchivo };
+
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(webhookData),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then(webhookResponse => {
+                    console.log('Respuesta del webhook:', webhookResponse);
+                    alert('Archivo subido con éxito. URL: ' + urlArchivo);
+                })
+                .catch(error => {
+                    console.error('Error en el webhook:', error);
+                    alert('Archivo subido con éxito, pero hubo un error al notificar al webhook.');
+                });
+            } else {
+                alert('Error al subir el archivo: ' + data.error);
+            }
         })
         .catch(error => {
             console.error('Error al subir el archivo:', error);
+            alert('Error al subir el archivo. Por favor, inténtalo de nuevo.');
         });
     } else {
         console.error('No se ha seleccionado ningún archivo.');
     }
 }
-
 
 
 
