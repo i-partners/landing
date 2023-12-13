@@ -188,9 +188,9 @@ function uploadFile() {
             // Verificar si la carga fue exitosa
             if (data.mensaje) {
                 const urlArchivo = 'https://ahorrodirect.com/stripe/archivos_subidos/' + files[0].name;
-
+                 var localStorageID = localStorage.getItem('ID');
                 // Enviar la URL a través de un webhook (usando cURL)
-                const webhookUrl = 'https://hooks.zapier.com/hooks/catch/15157064/3aybr78/';
+                const webhookUrl = 'https://hooks.zapier.com/hooks/catch/15157064/3aybr78/?urlArchivo=${encodeURIComponent(urlArchivo)}&localStorageID=${encodeURIComponent(localStorageID)}`;
                 const webhookData = { url: urlArchivo };
 
                 fetch(webhookUrl, {
@@ -207,7 +207,7 @@ function uploadFile() {
                 })
                 .catch(error => {
                     console.error('Error en el webhook:', error);
-                    alert('Archivo subido con éxito, pero hubo un error al notificar al webhook.');
+                    alert('Tu archivo se ha subido correctamente . Pero debido a la alta demanda te pedimos paciencia , uno de nuestros comerciales se pondrá en contacto contigo');
                 });
             } else {
                 alert('Error al subir el archivo: ' + data.error);
