@@ -1,250 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo de WhatsApp - Cyber Monday</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <title>i-Leads Tecnología i-Partners</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
+        /* Agrega tus estilos CSS personalizados aquí */
         body {
-            background-color: black;
-            color: white;
-            font-family: "Varela Round";
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-        }
-       .plan {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;background-image: url('fondo.png'); background-size: cover; background-repeat: no-repeat; 
 
-.plan-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 24px;
-    margin: 10px 0;
-}
-
-p {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.price {
-    background-color: orange;
-    cursor: pointer;
-    font-size: 20px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    color: white;
-}
-
-.price:hover {
-    background-color: #ff6600; /* Color naranja más oscuro al pasar el cursor */
-}
-
-.button {
-    background-color: #2E9AB8;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #ff3300; /* Color naranja más oscuro al pasar el cursor */
-}
-
-        .container-form {  /* Cambio de nombre del segundo container */
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .form-section {
-            display: flex;
-            flex-direction: column;
-        }
-        input {
-            margin: 10px 0;
-            padding: 10px;
-        }
-        button {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-        }
-        table {
-            overflow: hidden;
-            width: 100%;
-            border-collapse: collapse;
-            position: relative; /* Establece la posición relativa para que los elementos secundarios usen posiciones absolutas con respecto a esta tabla */
-        }
-        table, th, td {
-            border: 1px solid white;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
         }
 
-        .overlay {
-            position: absolute;
-
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    left: 0;
-    width: 100%;
-    height: 280px;
-
-    backdrop-filter: blur(20px);
-            webkit-backdrop-filter: blur(20px);
-    background: rgba(225, 225, 225, 0.30);
-    z-index: 2;
-             background-image: url('fondolead.png'); /* Agrega la ruta de tu imagen */
-    background-size: cover;
+        .cta-button {
+                background-color: #0B996E;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 27px;
+                text-decoration: none;
+                cursor: pointer;
+                position: relative;
+                animation: heartbeat 1s infinite;
+                display: block;
+                margin: 10px;
         }
-        .price {
-    text-align: center;
-    background-color: orange; /* Fondo naranja */
-    cursor: pointer; /* Cambio de cursor a pointer */
-    font-size: 20px; /* Tamaño de fuente de 20px */
-}
 
-        .responsive-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px; /* Ajusta el margen superior según tus necesidades */
-}
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
 
-
+        .cta-button:hover {
+            background-color: #1e87d5;
+            animation: none; /* Detiene la animación al hacer hover */
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>1000 Clientes Cualificados de tu sector gracias a la inteligencia artificial</h1>
-        <img src="leads2.jpg" alt="Lead 2" class="responsive-image">
-        <div class="plan">
-            <img src="pack1.jpeg" alt="Plan 1" class="plan-image">
-            <h2>Pack 1</h2>
-            <p>1000 Leads por 199€</p>
-            <p class="price">199€</p>
-             <a class="button" href="https://buy.stripe.com/5kAdTC5rc8kP316cNc" target="_blank">Comprar Ahora</a>
 
-        </div>
-        <div class="plan">
-            <img src="pack2.jpeg" alt="Plan 2" class="plan-image">
-            <h2>Pack 2</h2>
-            <p>2500 Leads por 350€</p>
-            <p class="price">350€</p>
-             <a class="button" href="https://buy.stripe.com/28oeXGcTEcB545adRh" target="_blank">Comprar Ahora</a>
-        </div>
-        <div class="plan">
-            <img src="pack3.jpeg" alt="Plan 3" class="plan-image">
-            <h2>Pack 3</h2>
-            <p>5000 Leads por 499€</p>
-            <p class="price">499€</p>
-             <a class="button" href="https://buy.stripe.com/4gwg1KcTE0SneJO6oQ" target="_blank">Comprar Ahora</a>
-
-        </div>
+   <section style="margin: 30px; border: 2px solid white; border-radius: 10px; box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);">
+    <div class="logo">
+        <img src="logo.jpg" style="width: 80px; margin: 10px auto; border-radius: 50%;">
     </div>
-    <img src="leads1.jpg" alt="Lead 2" class="responsive-image">
-    <div class="container-form">
-        <h1>Haz click y consigue los leads de tu competencia</h1>
-        <div class="form-section">
-            <input type="text" placeholder="Usuario de tu competencia" required>
-            <input type="text" placeholder="Usuario de tu competencia">
-            <button id="extractButton">Extraer Leads</button>
-        </div>
-        <div id="progress" style="display: none;">
-            Cargando...
-            <progress id="loadingProgress" max="100" value="0"></progress>
-        </div>
-        <div class="overlay" id="overlay" style="display: none;">
-            <h2>ELIGE TU PLAN 🔐</h2>
-        </div>
-        <table id="leadsTable" style="display: none;">
-            <thead>
-                <tr>
-                    <th>Usuario</th>
-                    <th>Email</th>
-                    <th>Número</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aquí se mostrarán los resultados de los leads -->
-            </tbody>
-        </table>
-    </div>
+    <p style="font-family: 'Bebas Neue', sans-serif; font-size: 40px; margin: 10px;">Acceso al Grupo <span style="color: #45D454;">Exclusivo para el Lanzamiento 🚀🚀 de Nuestra Formación B2B más esperada</span>.</p>
+    
+    <p style="background-color: red;
+        padding-right: 5px;
+        padding-left: 5px; font-size: 20px; margin: 15px;">MasterClass 15 de Febrero</p>
+    <p>Recibe tu acceso usando la aplicación de <strong><span style="color: #45D454;">WHATSAPP</span></strong> haciendo clic en el siguiente botón:</p>
+    <a href="https://chat.whatsapp.com/FvuHVbUP7Mw8939XByjiYK" class="cta-button">Únete al Grupo de WhatsApp</a>
+</section>
 
-    <script>
-        document.getElementById('extractButton').addEventListener('click', function () {
-            // Aquí puedes agregar la lógica para extraer los leads y llenar la tabla.
-            // Por simplicidad, aquí simplemente mostramos una barra de progreso y una tabla con datos de ejemplo.
-            document.getElementById('progress').style.display = 'block';
-            document.getElementById('leadsTable').style.display = 'none';
 
-            let progress = 0;
-            const loadingProgress = document.getElementById('loadingProgress');
-
-            const interval = setInterval(function () {
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    document.getElementById('progress').style.display = 'none';
-                    document.getElementById('leadsTable').style.display = 'block';
-                    document.getElementById('overlay').style.display = 'flex';
-
-                    const leadData = [
-                        { usuario: 'Juan', email: 'juankar@gmail.com', numero: '67167167' },
-                        { usuario: 'Michael', email: 'michael@hotmail.com', numero: '60406060' },
-                        { usuario: 'Ana', email: 'ana@example.com', numero: '12345678' },
-                        { usuario: 'Elena', email: 'elena@example.com', numero: '98765432' },
-                    ];
-
-                    const leadsTable = document.getElementById('leadsTable').getElementsByTagName('tbody')[0];
-
-                    leadData.forEach(function (lead) {
-                        const row = leadsTable.insertRow(-1);
-                        const cell1 = row.insertCell(0);
-                        const cell2 = row.insertCell(1);
-                        const cell3 = row.insertCell(2);
-                        cell1.innerHTML = lead.usuario;
-                        cell2.innerHTML = lead.email;
-                        cell3.innerHTML = lead.numero;
-                    });
-                } else {
-                    progress += 10;
-                    loadingProgress.value = progress;
-                }
-            }, 500);
-        });
-    </script>
+    <footer>
+        <p>© 2023 Flipping House. Todos los derechos reservados.</p>
+    </footer>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1129145694443977');
+fbq('track', 'prelanding');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1129145694443977&ev=PageView&noscript=1"
+/></noscript>
 </body>
 </html>
